@@ -1,0 +1,165 @@
+*{ margin: 0; padding: 0;}
+html {height: 100%; background: #fff;}
+body {height: 100%; overflow: hidden;}
+ul {list-style: none;}
+body, html {height: 100%; font-size: 0.07rem; font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #333;}
+input, button, textarea {outline: none; font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;}
+
+.wrap {position: relative; margin: 0 auto; height: 100%; max-width: 750px; width: 100%; background: url(../images/bg2.jpg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%;}
+
+.page-container {width: 100%; height: 100%;}
+.page-container .page {position: relative; background: #fff url(../images/bg2.jpg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%;}
+.page-container .page:first-child {background: #fff url(../images/bg.jpg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%;}
+.page-container .page::before {content: ""; position: absolute; top: .1rem; left: 0; width: 100%; height: .14rem; background: url(../images/header.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.page-container .page::after {content: ""; position: absolute; bottom: .2rem; left: 0; width: 100%; height: .35rem; background: url(../images/logo.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+
+.page1 .page-content {position: absolute; left: 0; top: 10%; width: 100%; height: 2.4rem;}
+.page1 .page-content>div {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.page1-text1 {background: url(../images/page1-text1.png) no-repeat center center; background-size: 100%;}
+.page1-text2 {background: url(../images/page1-text2.png) no-repeat center center; background-size: 100%;}
+.page1-seal {background: url(../images/page1-seal.png) no-repeat center center; background-size: 100%;}
+.page1-text3 {position: absolute; left: 0; top: 51%; width: 3.75rem; height: 2.25rem; background: url(../images/page1-text3.png) no-repeat center center; background-size: 100%;}
+.page1-hero {position: absolute; right: 0; top: 20%; width: 1.88rem; height: 2.95rem; background: url(../images/page1-hero.png) no-repeat center center; background-size: 100%;}
+.page1-yan {position: absolute; right: 10%; top: 65%; width: 1.08rem; height: 1.5rem; background: url(../images/page1-yan.png) no-repeat center center; background-size: 100%;}
+
+.page-hero {position: absolute; left: 2%; top: 10%; width: 96%; height: 4.5rem; font-size: 0;}
+.page-left {display: inline-block; margin-right: 3%; width: 49%; height: 100%;}
+.page-right {display: inline-block; width: 48%; height: 100%;}
+
+.page2 .page-left {background: url(../images/page2-hero.png) no-repeat right 0; background-size: contain;}
+.page2 .page-text1 {margin: .2rem 0; height: 1.96rem; background: url(../images/page2-text1.png) no-repeat left center; background-size: auto 100%;}
+.page2 .page-text2 {height: 1.77rem; background: url(../images/page2-text2.png) no-repeat left center; background-size: auto 100%;}
+
+.page3 .page-left {background: url(../images/page3-hero.png) no-repeat right 0; background-size: contain;}
+.page3 .page-text1 {margin: .1rem 0 .2rem; height: 1.96rem; background: url(../images/page3-text1.png) no-repeat left center; background-size: auto 100%;}
+.page3 .page-text2 {height: 1.57rem; background: url(../images/page3-text2.png) no-repeat left center; background-size: auto 100%;}
+
+.page4 .page-left {background: url(../images/page4-hero.png) no-repeat right 0; background-size: contain;}
+.page4 .page-text1 {margin: .2rem 0; height: 1.96rem; background: url(../images/page4-text1.png) no-repeat left center; background-size: auto 100%;}
+.page4 .page-text2 {height: 1.57rem; background: url(../images/page4-text2.png) no-repeat left center; background-size: auto 100%;}
+
+.page5 .page-left {background: url(../images/page5-hero.png) no-repeat right 0; background-size: contain;}
+.page5 .page-text1 {margin: .1rem 0 .2rem; height: 1.96rem; background: url(../images/page5-text1.png) no-repeat left center; background-size: auto 100%;}
+.page5 .page-text2 {height: 1.78rem; background: url(../images/page5-text2.png) no-repeat left center; background-size: auto 100%;}
+
+.page6 .page-content {position: absolute; left: 0; top: 8%; width: 100%; height: 4.8rem;}
+.page6 .page-content>div {position: absolute; left: 0; width: 100%;}
+.page6-text1 {top: 0; height: 2.45rem; background: url(../images/page6-text1.png) no-repeat center center; background-size: 100%;}
+.page6-text2 {top: 85%; height: .58rem; background: url(../images/page6-text2.png) no-repeat center center; background-size: 100%;}
+.page6-img {top: 30%; height: 2.45rem; background: url(../images/page6-img.png) no-repeat center center; background-size: 100%;}
+
+.page7 .page-content {position: absolute; left: 6%; top: 13%; width: 88%; height: 4.8rem;}
+.page7 .page7-text1 {height: .26rem; background: url(../images/page7-text1.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.page7 .page7-for {margin-top: .3rem; font-size: .19rem;}
+.page7 .page7-comment {position: relative; margin-top: .1rem; width: 100%; height: 1.8rem; border: 2px solid #adaa9d; border-radius: .1rem; overflow: hidden;}
+.page7 .page7-comment::after {content: "144个字以内"; position: absolute; bottom: .05rem; right: .1rem; font-size: .12rem; color: #999;}
+.page7 .page7-comment textarea {box-sizing: border-box; padding: .1rem; padding-bottom: .3rem; width: 100%; height: 100%; border: 0; resize: none; font-size: .14rem;}
+.page7 .page7-tips {position: relative; margin-top: .1rem; padding-left: .25rem; line-height: .2rem; font-size: .12rem;}
+.page7 .page7-tips::after {content: ""; position: absolute; left: .1rem; top: 0; width: .11rem; height: .2rem; background: url(../images/heart.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.page7 .page7-btn {margin-top: .4rem; text-align: center;}
+.page7 .page7-btn button {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/page7-btn.png) center center no-repeat; -webkit-background-size: 50%; background-size: 50%;}
+
+.mask {display: none; position: fixed; top: 0; left: 0; z-index: 9; width: 100%; height: 100%; background-color: rgba(0,0,0,.7);}
+.info {display: none; position: fixed; left: 50%; top: 50%; z-index: 10; box-sizing: border-box; margin-left: -1.6rem; margin-top: -1.25rem; padding: .15rem; width: 3.2rem; height: 2.5rem; background-color: #e4e4df; border: 1px solid #333; border-radius: .1rem;}
+.info .title {margin-top: .1rem; margin-bottom: .3rem; height: .26rem; background: url(../images/info-title.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.info .ipt {margin-bottom: .1rem;}
+.info .ipt label {display: inline-block; margin-right: .1rem; width: .6rem; text-align: right; font-size: .15rem;}
+.info .ipt input {padding: .05rem; width: 1.8rem; height: .24rem; background-color: #fff; border: 1px solid #afafaf; border-radius: .06rem; font-size: .14rem;}
+.info .btn {margin-top: .2rem; text-align: center;}
+.info .btn button {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/info-btn.png) center center no-repeat; -webkit-background-size: 40%; background-size: 40%;}
+
+.comments-list {display: none; position: absolute; top: 0; left: 0; z-index: 11; width: 100%; height: 100%; background: url(../images/bg.jpg) center center no-repeat; -webkit-background-size: cover; background-size: cover;}
+.comments-list::before {content: ""; position: absolute; top: .1rem; left: 0; width: 100%; height: .14rem; background: url(../images/header.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.comments-list::after {content: ""; position: absolute; bottom: .2rem; left: 0; width: 100%; height: .35rem; background: url(../images/logo.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.comments-list .title {margin-top: .5rem; margin-bottom: .3rem; height: .26rem; background: url(../images/comments-title.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.comments-list ul {margin: 0 auto; width: 90%; height: 4.2rem; overflow: auto; -webkit-overflow-scrolling: touch;}
+.comments-list li {display: -webkit-box; display: -webkit-flexbox; display: -webkit-flex; display: flex; -webkit-box-orient: horizontal; -webkit-flex-direction: row; flex-direction: row; margin-bottom: .1rem; padding: .1rem; background: #fff; border-radius: .1rem; font-size: 0;}
+.comments-list li .comment-rank {margin-right: .06rem; width: .24rem; text-align: center; font-size: .18rem; line-height: .4rem; font-family: "Sim Sun"; vertical-align: middle;}
+.comments-list li .comment-img {width: .4rem; height: .4rem; border-radius: 50%; vertical-align: middle;}
+.comments-list li .comment-ctn {margin-left: .1rem; flex-grow: 1; font-size: .12rem; line-height: 1.2;}
+.comments-list li .comment-likes {position: relative; margin-left: .1rem; padding-left: .15rem; width: .3rem; font-size: .12rem; line-height: .4rem;}
+.comments-list li .comment-likes::after {content: ""; position: absolute; left: 0; top: 0; width: .12rem; height: .4rem; background: url(../images/heart.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+
+.loading {position: absolute; z-index: 20; top: 0; left: 0; width: 100%; height: 100%; background: #fff;}
+.loading>p {position: absolute; top: 50%; left: 0; width: 100%; -webkit-transform: translateY(-50%); font-size: 0.2rem; color: #666;}
+
+.global-arrow-btm,
+.global-arrow-top {position: absolute; left: 50%; width: 38px; height: 22px; margin: -11px 0 0 -19px; opacity: 0;}
+.page-cur .global-arrow-btm {bottom: 0.5rem; -webkit-animation: global_arrow_btm 2.2s 0.2s infinite;}
+.page-cur .global-arrow-top {top: 0.2rem; -webkit-animation: global_arrow_top 2.2s 0.2s infinite; -webkit-transform:rotate(180deg);}
+
+/*箭头*/
+@-webkit-keyframes global_arrow_btm{
+	0%{opacity:0;-webkit-transform:translateY(0);}
+	50%{opacity:0.8;}
+	100%{opacity:0;-webkit-transform:translateY(-0.25rem);}
+}
+
+@-webkit-keyframes global_arrow_top{
+	0%{opacity:0;-webkit-transform:translateY(0) rotate(180deg);}
+	50%{opacity:0.8;}
+	100%{opacity:0;-webkit-transform:translateY(0.25rem) rotate(180deg);}
+}
+
+#musicIcon {position: absolute; top: 20px; right: 20px; z-index: 20; display: block; width: 30px; height: 30px; background: url(music.png) center center no-repeat; background-size: contain; border: 1px solid #fff; border-radius: 50%; -webkit-animation: turn 2s linear infinite;}
+#musicIcon.pause {-webkit-animation-play-state: paused;}
+@-webkit-keyframes turn {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+
+
+
+
+html{font-size:100px;}
+@media all and (min-width:320px) and (max-width:360px){
+	html{font-size:85.33px;}
+}
+@media all and (min-width:360px) and (max-width:380px){
+	html{font-size:100px;}
+}
+@media all and (min-width:380px) and (max-width:414px){
+	html{font-size:101.33px;}
+}
+@media all and (min-width:414px) and (max-width:460px){
+	html{font-size:110.4px;}
+}
+@media all and (min-width:460px) and (max-width:480px){
+	html{font-size:123px;}
+}
+@media all and (min-width:480px) and (max-width:512px){
+	html{font-size:128px;}
+}
+@media all and (min-width:512px) and (max-width:560px){
+	html{font-size:136.53px;}
+}
+@media all and (min-width:544px) and (max-width:560px){
+	html{font-size:145.07px;}
+}
+@media all and (min-width:560px) and (max-width:640px){
+	html{font-size:149.33px;}
+}
+@media all and (min-width:640px) and (max-width:680px){
+	html{font-size:165px;}
+}
+@media all and (min-width:680px) and (max-width:720px){
+	html{font-size:176px;}
+}
+@media all and (min-width:720px) and (max-width:750px){
+	html{font-size:186px;}
+}
+@media all and (min-width:750px){
+	html{font-size:197px;}
+}
+
+
+.page p {position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%; text-align: center; font-size: 1.5rem; line-height: 2rem; opacity: 0; color: #fff;}
+.page-cur p {-webkit-animation: slide_in_top 1s 0.2s forwards;}
+.page-bule {background-color: #4390EE;}
+.page-red {background-color: #CA4040;}
+.page-orange {background-color: #FF8604;}
+
+@-webkit-keyframes slide_in_top {
+	0%{opacity: 0; transform: translateY(-70%);}
+	100%{opacity: 1; transform: translateY(-50%);}
+}

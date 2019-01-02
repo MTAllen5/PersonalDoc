@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>包剪锤游戏</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="css/css.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="page page-start">
+        <div class="g_0"></div>
+        <div class="g_2"></div>
+        <div class="g_5"></div>
+        <div class="btn-box">
+          <button class="btn-red" id="startGame">开始游戏</button><br><br>
+          <button class="btn-blue" id="instr">说明</button>
+        </div>
+      </div>
+
+      <div class="page page-game">
+        <div class="tool-bar">
+          <i class="time"></i>
+          <span class="time-val">3.0s</span>
+          <i class="score"></i>
+          <span class="score-val">0</span>
+          <i class="life"></i>
+          <span class="life-val"><i></i><i></i><i></i></span>
+          <button class="pause"></button>
+          <button class="play"></button>
+        </div>
+        <div class="rps-show">
+          <div class="rps-list">
+
+          </div>
+          <div class="rps-point">
+
+          </div>
+        </div>
+        <div class="rps-btn">
+          <div class="r-btn" data-value="0"><img src="images/rock.png"><span>锤</span></div>
+          <div class="p-btn" data-value="1"><img src="images/paper.png"><span>包</span></div>
+          <div class="s-btn" data-value="2"><img src="images/scissors.png"><span>剪</span></div>
+        </div>
+      </div>
+
+      <div class="page page-result">
+        <h1></h1>
+        <div class="score-result">0123456789</div>
+        <div class="rank-result">排名：0123456789</div>
+        <div class="reward-result">
+          <span></span>
+          <span></span>
+          <p>分享游戏即可获得无限次游戏机会！</p>
+        </div>
+        <div class="btn-box">
+          <button class="btn-red" id="one-more">再玩一次</button>&nbsp;&nbsp;
+          <button class="btn-blue" id="rank">排行榜</button>
+        </div>
+      </div>
+
+      <div class="mask"></div>
+
+      <div class="instructions">
+        <div class="instr-txt">
+          <p>欢迎参加这个考验反应速度的挑战。<br>挑战很简单，如小狐出石头时，你出布，就打败小狐一次，赢的次数越多得分越高。</p>
+          <p class="big-txt">得分越多的ta，<br>将会获得以下奖励：</p>
+          <p class="big-txt">
+            排名第一：200元永旺购物卡；<br>
+            排名第二：100元永旺购物卡；<br>
+            排名第三：小米手环1一个。
+          </p>
+          <p>游戏截止时间<br>2016年11月22日18：00</p>
+        </div>
+        <div class="btn-box">
+          <button class="btn-red" id="instr-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="pause-box">
+        <div class="pause-txt">
+          <p>稍微休息一下吧</p>
+        </div>
+        <div class="btn-box">
+          <button class="btn-red" id="go-on">继续游戏</button>
+        </div>
+      </div>
+
+      <div class="share-box"></div>
+
+      <div class="rank-box">
+        <div class="rank-head"><i></i>排行榜</div>
+        <div class="rank-list">
+          <ul>
+            <li><span class="rank-num">1.</span><span class="rank-user"><img src="">我是昵称</span><span class="rank-score">5200分</span></li>
+            <li><span class="rank-num">2.</span><span class="rank-user"><img src="">我是昵称</span><span class="rank-score">5200分</span></li>
+            <li><span class="rank-num">3.</span><span class="rank-user"><img src="">我是昵称</span><span class="rank-score">5200分</span></li>
+          </ul>
+        </div>
+        <div class="btn-box">
+          <button class="btn-blue" id="rank-close">关闭</button>
+        </div>
+      </div>
+
+      <div class="logo"></div>
+    </div>
+    
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/mywx.js"></script>
+    <script src="js/base.js"></script>
+  </body>
+</html>
