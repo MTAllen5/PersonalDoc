@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>古人买房也发愁啊！</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="res/all.css" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="wrapper">
+
+    <div class="page page-home">
+      <div class="home-bg"></div>
+      <div class="home-text"></div>
+      <div class="progress-container">
+        <div class="progress"><span></span></div>
+        <div class="loading_text"></div>
+        <button class="btn-start">点击进入</button>
+      </div>
+      <div class="home-people"></div>
+    </div>
+
+    <div class="page page-player">
+      <video class="video" id="video" src="res/video.mp4" width="100%" x-webkit-airplay="true" webkit-playsinline playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" preload="auto"></video>
+    </div>
+
+    <div class="page page-end">
+      <div class="end-text"></div>
+      <div class="btn-box">
+        <button class="btn-share"></button>
+        <button class="btn-review"></button>
+      </div>
+    </div>
+
+    <div class="share"></div>
+  </div>
+
+  <script src="../js/zepto.min.js"></script>
+  <script src="../js/preloadjs-0.6.2.min.js"></script>
+  <script src="../js/mywx.js"></script>
+  <script src="res/all.js?v=1"></script>
+  <script>
+    window.mywx && mywx.setData({
+      title: '古人买房也发愁啊！',
+      desc: '杜甫、白居易和苏辙等也都曾为买房苦苦奋斗……',
+      link: 'http://wx.gz.focus.cn/html/flqy',
+      imgUrl: 'http://wx.gz.focus.cn/html/flqy/images/icon.jpg'
+    });
+  </script>
+</body>
+</html>

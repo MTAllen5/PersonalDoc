@@ -23,10 +23,24 @@ body {
 }
 
 section {
+    position: relative;
     margin-bottom: 40px;
 }
-section:last-child {
-    margin-bottom: 0;
+section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -20px;
+    display: block;
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #f2f3f3;
+}
+section:first-child {
+    margin-top: 0;
+}
+section:first-child::before {
+    display: none;
 }
 
 p {
@@ -70,6 +84,7 @@ ol {
     width: 4px;
     height: 20px;
     background-color: rgb(51, 151, 255);
+    border-radius: 2px;
     vertical-align: middle;
 }
 
@@ -85,10 +100,6 @@ ol {
     font-size: 14pt;
 }
 
-.information p {
-    font-size: 11pt;
-}
-
 .qrcode {
     float: right;
     margin-top: 5px;
@@ -97,3 +108,40 @@ ol {
     height: 110px;
 }
 
+.h5-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.h5-item {
+    margin: 20px 0;
+    width: 22%;
+    text-align: center;
+}
+.h5-item-img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+.h5-item-img:hover canvas {
+    opacity: 1;
+    transform: scale(1);
+}
+.h5-item img {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+}
+.h5-item canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all .5s;
+}
+.h5-item h4 {
+    margin-top: 10px;
+    font-size: 10pt;
+}

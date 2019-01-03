@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>中国新歌声晋级直通车</title>
+  <link href="/css/singer_train2/res/all.css?v=2.5" rel="stylesheet">
+</head>
+<body>
+
+  <div class="wrapper" id="app" v-cloak>
+
+    <!-- 选手列表 -->
+    <div class="page-vote" v-bind:class="{'showPersonal': showPersonal}">
+      <div class="top3-portrait">
+        <span v-for="(item, index) in voteSelect.contestant" v-if="index < 3"><img v-bind:src="imgUrl(item.portrait? item.portrait : 'portrait.jpg')"></span>
+      </div>
+
+      <div class="bg-mask">
+        <div class="ctn-title"></div>
+        <div class="top3-info">
+          <div v-for="(item, index) in voteSelect.contestant" v-if="index < 3" v-on:click="showPersonalPage(item)">
+            <h5 class="contestant-name">{{item.name}}</h5>
+            <span class="contestant-vote-num">{{item.count * 20}}</span>
+          </div>
+        </div>
+        <ul class="contestant-list">
+          <li v-for="(item, index) in voteSelect.contestant" v-if="index >= 3" v-on:click="showPersonalPage(item)">
+            <span class="number">{{index + 1}}</span>
+            <img class="con-port" v-bind:src="imgUrl(item.portrait? item.portrait : 'portrait.jpg')">
+            <button class="con-vote">试听为TA投票</button>
+            <div class="con-info">
+              <h5 class="contestant-name">{{item.name}}<span class="contestant-vote-num">{{item.count * 20}}</span></h5>
+              <p>参赛号码：{{item.detail_id}}</p>
+              <p class="con-motto">{{item.motto}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="logo"></div>
+
+      <!-- 倒计时 -->
+      <div class="count-down" v-show="countDown != ''">{{countDown}}</div>
+    </div>
+
+
+    <!-- 规则 -->
+    <transition name="fade">
+      <div class="rules" v-show="showRules">
+        <div class="rules-box">
+          <div class="rules-text" style="height:auto;font-size:0.12rem;color:#DDD;background:none;padding:0.1rem 0.2rem;">
+            <h2 style="font-size:0.16rem;text-align:center;font-weight:normal;color:#FFF;">【票选规则】</h2>
+
+            <p style="margin-left:-0.5em;margin-top:0.2rem;">【奖品规则】</p>
+            <p>第一名获得直登全国城市海选总决赛舞台的机会！</p>
+            <p>其他选手奖品请点击 <a href="/html/singer_train2/prize.html" style="color:#D4E26F;">查看所有奖品 &gt;</a></p>
+
+            <p style="margin-left:-0.5em;margin-top:0.1rem;">【投票方式】</p>
+            <p>票数以“么么哒”表示，每20个“么么哒”2元</p>
+            <p>（每个选手可以免费投10次，可以分享给自己的朋友去投）</p>
+
+            <p style="margin-left:-0.5em;margin-top:0.1rem;">【计分标准】</p>
+            <p>线上投票占总分70%，评委分数占总分30%</p>
+            <p>（评委分数将于6月5日公布）</p>
+
+            <p style="margin-left:-0.5em;margin-top:0.1rem;">【投票时间】</p>
+            <p>5月31日（凌晨0点）-6月6日（18:00）</p>
+          </div>
+          <!-- <p style="padding-top:0.1rem;text-align:center;"><a href="/html/singer_train2/prize.html" style="color:#FFF;font-size:0.14rem;">查看所有奖品</a></p> -->
+          <div class="rules-close" v-on:click="showRules = false"></div>
+        </div>
+      </div>
+    </transition>
+
+
+    <!-- 选手个性页面 -->
+    <transition name="fade">
+    <div class="page-personal" v-show="showPersonal">
+      <div class="big-img" v-bind:style="'background-image: url(' + bigImgUrl() + ')'">
+        <div class="ctn-title">
+          <p>选手风采</p>
+          <button class="rules-open" v-on:click.prevent="showRules = true"></button>
+        </div>
+        <div class="bullet-comments">
+          <!-- 弹幕内容 -->
+        </div>
+      </div>
+      <div class="personal-box">
+        <div class="personal-info">
+          <img class="personal-port" v-bind:src="imgUrl(payContestant.portrait? payContestant.portrait : 'portrait.jpg')">
+          <p><strong style="color: #e7d684;">NO.{{payContestant.rank}}</strong><span>目前排名</span><span class="contestant-vote-num">{{payContestant.count * 20}}</span></p>
+          <p><strong class="contestant-name">{{payContestant.name}}</strong><span>参赛号码：{{payContestant.detail_id}}</span></p>
+          <p>{{payContestant.motto}}</p>
+        </div>
+        <div class="player">
+          <audio id="music" v-if="payContestant && payContestant.detail_id" v-bind:src="audioUrl()" preload v-on:timeupdate="playerTimeupdate" v-on:ended="playerEnd" v-on:canplaythrough="canplay"></audio>
+          <div class="btn-play" v-on:click="playAudio" v-bind:class="{'pause': player.playing}"></div>
+          <div class="info">
+            <div class="name">参赛歌曲：《{{payContestant.songName}}》</div>
+            <div class="timeline"><i v-bind:style="{width: player.progress}"></i></div>
+            <div class="time">{{player.curTime}} / {{payContestant.duration}}</div>
+          </div>
+          <div class="player-mask" v-show="player.loading">加载中......</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="personal-vote" style="margin-right: .2rem; width: 1rem;" v-on:click="showScore = true">评委点评</div>
+          <div class="personal-vote" v-on:click="showVotePay()"><i></i>为TA投票</div>
+          <div class="impression"><label>好友印象：</label><input type="text" maxlength="15" placeholder="写下你的印象" v-model.trim="commentContent"><button v-on:click="checkCommment">发送</button></div>
+        </div>
+      </div>
+      <div class="back2list" v-on:click="back2List">查看全部排行&gt;</div>
+    </div>
+    </transition>
+
+
+    <!-- 投票框 -->
+    <transition name="fade">
+    <div class="" v-show="showVote">
+      <!-- 投票框分享提示 -->
+      <div class="share"></div>
+
+      <div class="panel" style="top: 52%;">
+        <div class="vote-obj-info">
+          <div class="vote-obj-portrait"><img v-if="payContestant && payContestant.portrait" v-bind:src="imgUrl(payContestant.portrait)"><span>{{payContestant.rank}}</span></div>
+          <h5 class="contestant-name">{{payContestant.name}}</h5>
+          <p class="contestant-motto">{{payContestant.motto}}</p>
+          <p class="contestant-vote-num">{{payContestant.count * 20}}</p>
+        </div>
+
+        <div class="votes" v-if="!isFreeVote">
+          <span class="votes-reduce" v-on:click="voteNum > 1? voteNum-- : voteNum">-</span>
+          <div class="votes-number txt-red">
+            <span>{{voteNum * 2}}</span>
+            <select v-model="voteNum_selected" v-on:change="changeVoteNum">
+              <option value="1">2</option>
+              <option value="5">10</option>
+              <option value="10">20</option>
+              <option value="20">40</option>
+              <option value="50">100</option>
+              <option value="100">200</option>
+              <option value="150">300</option>
+              <option value="200">400</option>
+              <option value="300">600</option>
+              <option value="400">800</option>
+              <option value="500">1000</option>
+              <!-- <option v-for="index in 500" v-bind:value="index">{{index * 2}}</option> -->
+            </select>
+          </div>
+          <span class="votes-add txt-red" v-on:click="voteNum < 200? voteNum++ : voteNum">+</span>
+        </div>
+        <div class="votes" v-else>
+          <div class="votes-number txt-red">
+            <span>{{voteNum * 20}}</span>
+          </div>
+        </div>
+
+        <div class="btn-box">
+          <button v-on:click.prevent="closeVotePay">再看看</button><!--
+          --><button class="txt-red" v-if="isFreeVote" v-on:click="voteFree()">为TA投票</button><!--
+          --><button class="txt-red" v-else v-on:click="getOrderID()">确认并支付</button>
+        </div>
+      </div>
+    </div>
+    </transition>
+
+
+    <!-- 提示框 -->
+    <transition name="fade">
+      <div class="panel" v-show="showMsgTips">
+        <div class="result-text">{{tipsMsg}}</div>
+        <div class="btn-box">
+          <button class="block" v-on:click="showMsgTips = false">好的</button>
+        </div>
+      </div>
+    </transition>
+
+
+    <!-- 评分 -->
+    <transition name="fade">
+      <div class="panel score-panel" v-if="showScore">
+        <div class="score-content">
+          <div class="score-head">
+            <div>平均得分<br><i><span>{{Math.round(payContestant.totalScore)}}</span>分</i></div>
+          </div>
+          <ul class="score-list">
+            <li>
+              <img src="/css/singer_train2/images/judge1.png">
+              <h5>高翔</h5>
+              <p>广东省流行音乐协会副秘书长</p>
+              <p>广州音协副主席  广州市流行音乐协会主席</p>
+              <div class="dialog">
+                <p>“{{payContestant.comments[0].content}}”</p>
+                <span class="score-num">{{payContestant.comments[0].score}}分</span>
+                <div class="score-bar">
+                  <i v-bind:style="{width: payContestant.comments[0].score + '%'}"></i>
+                </div>
+              </div>
+            </li>
+            <li>
+              <img src="/css/singer_train2/images/judge2.png">
+              <h5>方奕</h5>
+              <p>第二季《中国新歌声》全国城市海选广州赛区音乐总监</p>
+              <p>广州市流行音乐协会副主席</p>
+              <div class="dialog">
+                <p>“{{payContestant.comments[1].content}}”</p>
+                <span class="score-num">{{payContestant.comments[1].score}}分</span>
+                <div class="score-bar">
+                  <i v-bind:style="{width: payContestant.comments[1].score + '%'}"></i>
+                </div>
+              </div>
+            </li>
+            <li>
+              <img src="/css/singer_train2/images/judge3.png">
+              <h5>蔡领</h5>
+              <p>著名音乐人</p>
+              <p>广东省流行音乐协会与即兴钢琴委员会副主任兼秘书长</p>
+              <div class="dialog">
+                <p>“{{payContestant.comments[2].content}}”</p>
+                <span class="score-num">{{payContestant.comments[2].score}}分</span>
+                <div class="score-bar">
+                  <i v-bind:style="{width: payContestant.comments[2].score + '%'}"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="btn-box">
+          <button class="block" v-on:click="showScore = false">关闭</button>
+        </div>
+      </div>
+    </transition>
+
+
+    <div class="mask" v-show="showMask"></div>
+
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7db2c2f57ac29de50cbc50095fdf78ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script type="text/javascript">var _focus_pv_id="focus.wap.all";</script>
+  <script type="text/javascript" src="http://js.sohu.com/mail/pv/pv_v211.js"></script>
+  <script>
+    var userinfo = (function() {
+      var nickname = "<?php echo $userInfo['nickname']?>";
+      var token = "<?php echo md5($userInfo['openid'])?>";
+      var garden = "<?php echo $_GET['garden']?>".split("_");
+      if(isNaN(Number(garden[0]))) {
+        garden = [];
+      }
+
+      return {
+        nickname : nickname,
+        token : token,
+        vote_id: garden[0],
+        detail_id: garden[1]
+      };
+    }());
+  </script>
+  <script src="/css/singer_train2/res/voteList.js?v=2.5"></script>
+  <script src="http://wx.gz.focus.cn/js/vue.min.js"></script>
+  <script src="http://wx.gz.focus.cn/js/zepto.min.js"></script>
+  <script src="http://wx.gz.focus.cn/js/director.min.js"></script>
+  <script src="http://wx.gz.focus.cn/js/mywx.js"></script>
+  <script>
+    mywx.platform = 108;
+    mywx.init();
+  </script>
+  <script src="/css/singer_train2/res/all.js?v=2.5"></script>
+</body>
+</html>

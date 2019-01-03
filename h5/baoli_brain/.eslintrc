@@ -1,0 +1,31 @@
+{
+  // "extends": "eslint:recommended",
+  "extends": "airbnb",
+  "env": {
+    "jquery": true,
+    "browser": true,
+  },
+  "globals": {
+    "Vue": true,
+    "mywx": true,
+    "AMap": true,
+    "echarts": true,
+    "_hmt": true,
+    "Router": true,
+    "IScroll": true
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "func-names": 0,
+    "vars-on-top": 0,
+    "no-underscore-dangle": 0,
+    "no-param-reassign": 0,
+    "no-mixed-operators": 0,
+    "no-var": 0,
+    "object-shorthand": 0,
+    "prefer-arrow-callback": 0,
+    "prefer-template": 0,
+    "eqeqeq": 0,
+    "no-restricted-syntax": 0
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>广州房价地图</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/css.css" rel="stylesheet">
+</head>
+<body>
+  <!-- 内容 -->
+  <div class="wrapper" id="priceMap">
+    <transition name="priceMap" appear v-on:after-enter="showContent($event)">
+    <div>
+
+      <!-- 封面 -->
+      <div class="page page-cover" v-bind:class="{passed: coverPassed}">
+        <div class="big-title">
+          <h2>第{{curPhase.phase}}期</h2>
+          <h1>广州房价地图</h1>
+          <h4>{{curPhase.upDate}}</h4>
+        </div>
+        <div class="recommend-title">
+          <h3>推荐主题</h3>
+          <p v-for="title in curPhase.cover">{{title}}</p>
+        </div>
+        <div class="to-map" v-on:click="go2map"></div>
+        <div class="logo"></div>
+      </div>
+
+      <!-- 主题模板 -->
+      <div class="page page-theme" v-bind:class="{passed: theme.passed}" v-for="(theme, index) in curPhase.themes">
+        <div class="header">
+          <div class="prev-theme" v-on:click="prevTheme(index)"><span></span></div>
+          <div v-else><span style="margin-right: .1rem;"></span></div>
+          <h1 v-html="theme.title"></h1>
+          <div class="next-theme" v-on:click="nextTheme(index + 1)"><span></span></div>
+        </div>
+        <div class="figure">
+          <span class="placeholder"></span>
+          <!-- <img v-bind:src="'images/phase' + curPhase.phase + '_map' + (index + 1) + '.jpg'"> -->
+          <div class="map_img"></div>
+        </div>
+<!--         <div class="widget-box">
+          <span class="like" v-bind:class="{active: theme.liked}" v-on:click="setLikeNum(index)"><i>{{theme.likeNum}}</i></span>
+          <span class="share-theme" v-on:click="themeShareTips = true"></span>
+        </div> -->
+        <p class="note" v-bind:class="{plus: theme.plus}" v-html="theme.desc"></p>
+      </div>
+
+      <!-- 往期回顾 -->
+      <div class="history-list">
+        <div class="header">
+          <span class="prev-theme" v-on:click="prevTheme(curPhase.themes.length)"></span>
+          <h1>往期回顾</h1>
+          <span></span>
+        </div>
+        <p>下期更新时间{{nextDate}}</p> 
+        <ul>
+          <li v-for="item in phaseData">
+            <a v-bind:href="'/html/price_map?phase=' + item.phase" v-on:click="isShared">
+              <img v-bind:src="'images/' + item.shareIcon">
+              <h2>第{{phaseCn(item.phase)}}期<span>{{item.upDate}}</span></h2>
+              <p v-for="title in item.cover">{{title}}</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 教程说明蒙版 -->
+      <!-- <div class="mask instruction" v-show="instructionTips" v-on:click="instructionTips = false"></div> -->
+      <!-- 历史分享蒙版 -->
+      <div class="mask share" v-show="historyShareTips" v-on:click="historyShareTips = false"></div>
+      <!-- 主题分享蒙版 -->
+      <div class="mask share2" v-show="themeShareTips" v-on:click="themeShareTips = false"></div>
+
+    </div>
+    </transition>
+  </div>
+
+  
+  <!-- <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7db2c2f57ac29de50cbc50095fdf78ef";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script type="text/javascript">var _focus_pv_id="focus.wap.all"; console.log(_focus_pv_id);</script>
+  <script type="text/javascript" src="http://js.sohu.com/mail/pv/pv_v211.js"></script> -->
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/zepto.min.js"></script>
+  <script src="../js/mywx.js"></script>
+  <script src="js/base.js?v=20170525"></script>
+  <!-- <script>
+    // 提交主题数据到百度统计
+    $(window).on("hashchange", function() {
+      _hmt.push(['_trackPageview', "/html/price_map" + location.hash]);
+    });
+  </script> -->
+</body>
+</html>

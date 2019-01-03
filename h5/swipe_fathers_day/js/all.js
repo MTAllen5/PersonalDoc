@@ -48,7 +48,40 @@ $(function () {
 
 	
 	//添加预加载内容
-	var res = ["./images/logo.png"];
+	var res = [
+    "/images/bg.jpg",
+    "/images/bg2.jpg",
+    "/images/comments-title.png",
+    "/images/header.png",
+    "/images/heart.png",
+    "/images/heart_unlike.png",
+    "/images/info-btn.png",
+    "/images/info-title.png",
+    "/images/logo.png",
+    "/images/page1-hero.png",
+    "/images/page1-seal.png",
+    "/images/page1-text1.png",
+    "/images/page1-text2.png",
+    "/images/page1-text3.png",
+    "/images/page1-yan.png",
+    "/images/page2-hero.png",
+    "/images/page2-text1.png",
+    "/images/page2-text2.png",
+    "/images/page3-hero.png",
+    "/images/page3-text1.png",
+    "/images/page3-text2.png",
+    "/images/page4-hero.png",
+    "/images/page4-text1.png",
+    "/images/page4-text2.png",
+    "/images/page5-hero.png",
+    "/images/page5-text1.png",
+    "/images/page5-text2.png",
+    "/images/page6-img.png",
+    "/images/page6-text1.png",
+    "/images/page6-text2.png",
+    "/images/page7-btn.png",
+    "/images/page7-text1.png"
+  ];
 
 	loader.startLoad(res).handlerLoadComplete(function () {
 
@@ -56,8 +89,8 @@ $(function () {
 		$(".page").each(function(i, item) {
 			$(item).append('<div class="' + (i == $(".page").length - 1? "global-arrow-top" : "global-arrow-btm") + '">' +
             					'<svg width="38" height="22" version="1.1">' +
-              					'<line x1="2" y1="20" x2="20" y2="2" style="stroke:#fff;stroke-width:4;"></line>' +
-              					'<line x1="18" y1="2" x2="36" y2="20" style="stroke:#fff;stroke-width:4;"></line>' +
+              					'<line x1="2" y1="20" x2="20" y2="2" style="stroke:#cc1213;stroke-width:4;"></line>' +
+              					'<line x1="18" y1="2" x2="36" y2="20" style="stroke:#cc1213;stroke-width:4;"></line>' +
             					'</svg>' +
           					'</div>');
 		});
@@ -70,24 +103,25 @@ $(function () {
 	    direction: 'vertical'
 	  });
 
+
 		// 背景音乐
 	  $("#musicIcon").on("click", function() {
-			if($(this).hasClass("pause")) {
-				$(this).removeClass("pause");
-				$("#audio")[0].play();
-			} else {
-				$(this).addClass("pause");
+			if($(this).hasClass("play")) {
+				$(this).removeClass("play");
 				$("#audio")[0].pause();
+			} else {
+				$(this).addClass("play");
+				$("#audio")[0].play();
 			}
 		});
 
 	  //其他初始化
 	  function sendComment(content) {
 	  	$.ajax({
-				url: "data.json",
+				url: "/commentApi/commentNew",
 				dataType: "json",
 				data: {
-					username: escape(GDATA.nickname),
+					username: isLogin.name,
 					content: escape(content),
 					uid: GDATA.token,
 					mobile: isLogin.mobile,
@@ -101,12 +135,66 @@ $(function () {
               $(".tips").removeClass("show");
             }, 2000);
             getComment();
+            $("#conmment").val("");
+            $(".page-container").hide();
+            $(".comments-list").show();
           } else {
             alert("网络出现点问题哦~");
           }
 				}
 			});
 	  }
+
+	  function getComment() {
+      $.ajax({
+        url: "/commentApi/commentList",
+        dataType: "json",
+        data: {
+          type: "swipe_fathers_day",
+          pageSize: 5000,
+          uid: GDATA.token
+        },
+        success: function(result) {
+          var html = "";
+          var comments;
+          if(result.code == 0) {
+            comments = result.data.comments;
+            comments.sort(function(a, b) {
+              return b.likes_count - a.likes_count;
+            });
+            for(var i = 0; i < comments.length; i++) {
+              html += '<li>' +
+              					'<span class="comment-rank">' + (i + 1) + '</span>' +
+                        '<img class="comment-img" src="' + comments[i].icon + '">' +
+                        '<div class="comment-ctn"><strong>' + comments[i].username + '：</strong>' + unescape(comments[i].content) + '</div>' +
+                        '<span class="comment-likes' + (comments[i].is_like == 0? '' : ' liked') + '" data-cid="' + comments[i].comment_id + '">' + comments[i].likes_count + '</span>' +
+                      '</li>';
+            }
+          } else if(result.code == 1001) {
+            html += "<li style='display: block; text-align: center; padding: .1rem 0; font-size: .14rem;'>暂无告白~</li>";
+          }
+          $(".comments-list ul").html(html);
+        }
+      });
+    }
+
+    function setNum(cid, cbk) {
+      $.ajax({
+        url: "/commentApi/CommentLike",
+        dataType: "json",
+        data: {
+          comment_id: cid,
+          type: "swipe_fathers_day",
+          uid: GDATA.token
+        },
+        success: function(result) {
+          if(result.code === 0) {
+            cbk && cbk();
+          }
+        }
+      });
+    }
+
 
 	  $("#submit").on("click", function() {
 	  	var content = $("#conmment").val();
@@ -121,6 +209,7 @@ $(function () {
 	  	}
 	  });
 
+
 	  $("#submit_info").on("click", function() {
 	  	var name = $("#name").val();
 	  	var mobile = $("#mobile").val();
@@ -132,11 +221,45 @@ $(function () {
 	  		alert("请留下你的电话");
 	  		return;
 	  	}
-	  	localStorage.setItem("is_login_swipe_father_day", {
+
+	  	var userInfo = {
 	  		name: name,
 	  		mobile: mobile
-	  	});
-	  	isLogin = localStorage.getItem("is_login_swipe_father_day");
+	  	}
+	  	localStorage.setItem("is_login_swipe_father_day", JSON.stringify(userInfo));
+	  	isLogin = userInfo;
+
+	  	$(".mask, .info").hide();
+      $("#submit").trigger("click");
 	  });
+
+
+	  $(".comments-list").on("click", ".comment-likes", function() {
+	  	var _this = this;
+	  	setNum($(_this).data("cid"), function() {
+	  		$(_this).toggleClass("liked");
+        if($(_this).hasClass("liked")) {
+          $(_this).text(Number($(_this).text()) + 1);
+        } else {
+          $(_this).text(Number($(_this).text()) - 1);
+        }
+	  	});
+	  });
+
+    $("#oneMore").on("click", function() {
+      window.location = "http://wx.gz.focus.cn/game/single/?gid=62";
+    });
+
+    $("#oneMoreCom").on("click", function() {
+      $(".page-container").show();
+      $(".comments-list").hide();
+    });
+
+    mywx.setData({
+      'title': '今年父亲节你还在晒老照片吗？',
+      'desc': '看恒大生态世纪城带你玩转新花样！漫画版老爸已全面上线，欢迎来晒！',
+      'link': 'http://wx.gz.focus.cn/game/single/?gid=62',
+      'imgUrl': 'http://wx.gz.focus.cn/css/swipe_fathers_day/res/images/icon.jpg'
+    });
 	});
 });

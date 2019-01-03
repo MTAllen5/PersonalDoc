@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <title>滑动</title>
+  <link rel="stylesheet" href="./css/swiper-3.3.1.min.css">
+  <link rel="stylesheet" href="./css/all.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="page-container">
+      <div class="page-wrapper">
+
+        <div class="page page1">
+          <div class="star-layer"></div>
+          <div class="page1-text1"><div class="num-scroller" id="num-scroller1"></div></div>
+          <div class="page1-text2"><div class="num-scroller" id="num-scroller2"></div></div>
+          <div class="year">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="page page2">
+          <div class="star-layer"></div>
+          <div class="page2-text1"></div>
+          <div class="area-circle">
+            <div class="panyu first"></div>
+            <div class="zengcheng second"></div>
+            <div class="huangpu third"></div>
+            <svg id="area-data">
+              <circle data-for="panyu" cx="130" cy="100" r="2" style="stroke: white; fill: white; opacity: 0;"></circle>
+              <g data-for="panyu" style="stroke: white; fill: none;">
+                <path d="M 130 100 l -10 -30 l -40 0" />
+              </g>
+              <text data-for="panyu" x="40" y="60" style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;">关注人数：6369056</text>
+
+              <circle data-for="huangpu" cx="130" cy="100" r="2" style="stroke: white; fill: white; opacity: 0;"></circle>
+              <g data-for="huangpu" style="stroke: white; fill: none;">
+                <path d="M 130 100 l -10 -30 l -40 0" />
+              </g>
+              <text data-for="huangpu" x="40" y="60" style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;">关注人数：6366905</text>
+
+              <circle data-for="zengcheng" cx="130" cy="100" r="2" style="stroke: white; fill: white; opacity: 0;"></circle>
+              <g data-for="zengcheng" style="stroke: white; fill: none;">
+                <path d="M 130 100 l -10 -30 l -40 0" />
+              </g>
+              <text data-for="zengcheng" x="40" y="60" style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;">关注人数：5453521</text>
+            </svg>
+          </div>
+          <div class="area-map">
+            <div class="panyu active"></div>
+            <div class="zengcheng"></div>
+            <div class="huangpu"></div>
+          </div>
+        </div>
+
+        <div class="page page3">
+          <div class="star-layer"></div>
+          <div class="page3-text1"></div>
+          <svg id="metro_lines">
+            <g style="fill:none; stroke: white;">
+
+              <!-- 一号线 -->
+              <path class="line1" d="M 60 185 l 0 -25 l 20 0 l 15 -15 l 0 -20 l 100 0 l 15 -15 l -15 -15" ></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="160" y="80">
+                一号线关注人数：261672
+              </text>
+
+              <!-- 二号线 -->
+              <path class="line2" d="M 130 230 l 25 0 l 0 -30 l -30 -30 l 0 -100 l 40 -40" ></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="70">
+                二号线关注人数：330974
+              </text>
+
+              <!-- 三号线 -->
+              <path class="line3" d="M 195 230 l 0 -105 l 30 0 l 0 -40"></path>
+              <path class="line3-e" d="M 195 125 l 0 -65 l -30 -30 l 0 -30"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="50">
+                三号线关注人数：364525
+              </text>
+
+              <!-- 四号线 -->
+              <path class="line4" d="M 270 125 l -20 20 l 0 90 l 80 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="110">
+                四号线关注人数：369167
+              </text>
+
+              <!-- 五号线 -->
+              <path class="line5" d="M 60 145 l 20 -20 l 0 -20 l 20 -20 l 20 0 l 30 30 l 30 0 l 0 30 l 130 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="80" y="70">
+                五号线关注人数：352946
+              </text>
+
+              <!-- 六号线 -->
+              <path class="line6" d="M 60 95 l 0 30 l 20 20 l 80 0 l 0 -30 l 30 -30 l 120 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="70">
+                六号线关注人数：504287
+              </text>
+
+              <!-- 七号线 -->
+              <path class="line7" d="M 130 230 l 40 0 l 10 -10 l 20 0 l 30 -30 l 20 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="180" y="230">
+                七号线关注人数：331761
+              </text>
+
+              <!-- 八号线 -->
+              <path class="line8" d="M 110 20 l 0 150 l 140 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="30" y="10">
+                八号线关注人数：139752
+              </text>
+
+              <!-- 九号线 -->
+              <path class="line9" d="M 165 10 l -90 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="100" y="40">
+                九号线关注人数：224568
+              </text>
+
+              <!-- 十一号线 -->
+              <path class="line11" d="M 130 95 l 70 0 a45,45 0 1,1 0,90 l -70 0 a45,45 0 1,1 0,-90"></path>
+
+              <!-- 十三号线 -->
+              <path class="line13" d="M 290 145 l 0 15 l 70 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="180">
+                十三号线关注人数：258213
+              </text>
+
+              <!-- 十四号线 -->
+              <path class="line14" d="M 165 30 l 15 0 l 25 -25 l 100 0"></path>
+              <path class="line14-e" d="M 230 5 l 20 20 l 40 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="50">
+                十四号线关注人数：194834
+              </text>
+
+              <!-- 二十一号线 -->
+              <path class="line21" d="M 240 125 l 50 0 l 0 -110 l 40 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="150" y="110">
+                二十一号线关注人数：441163
+              </text>
+              
+              <!-- 广佛线 -->
+              <path class="linegf" d="M 15 245 l 0 -30 l 30 0 l 0 -30 l 40 0 l 15 -15 l 10 0 l 30 30 l 55 0"></path>
+              <text style="stroke-width: 0; fill: white; font-size: .12rem; opacity: 0;" x="60" y="220">
+                广佛线关注人数：287003
+              </text>
+            </g>
+          </svg>
+          <div class="page3-text2"></div>
+        </div>
+
+        <div class="page page4">
+          <div class="star-layer"></div>
+          <div class="page4-text1"></div>
+          <div class="pie-chart">
+            <svg id="pie_chart">
+              <g style="fill:none; stroke: white; opacity: .3">
+                <path class="pie1" d="M 50 50 a50,50 0 1,1 -10,-10"></path>
+              </g>
+            </svg>
+          </div>
+          <div class="page4-text2"></div>
+        </div>
+
+        <div class="page page5">
+          <div class="star-layer"></div>
+          <div class="page5-text1">
+          共有<div class="num-scroller" id="num-scroller3">0,000,000</div>位购房者<br>希望通过搜狐焦点实现家的梦想
+          </div>
+          <div class="page5-img1"></div>
+          <div class="page5-text2">共有<div class="num-scroller" id="num-scroller4">00,000</div>位购房者<br>跟着搜狐焦点去看心爱的房子</div>
+          <div class="page5-img2"></div>
+        </div>
+
+        <div class="page page6">
+          <div class="star-layer"></div>
+          <div class="page6-text1">
+            搜狐焦点共派出超<div class="num-scroller" id="num-scroller5">000</div>万元大礼<br><span>什么？你没拿到？</span>
+          </div>
+          <div class="page6-text2">这次不要再错过了<br>我们又准备了价值超<div class="num-scroller" id="num-scroller6">00</div>万元大礼</div>
+          <div class="page6-img1"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="view recommend-view">
+      <div class="recommend-view-text1"></div>
+      <div class="recommend-prize-list">
+        <div class="recommend-prize-item">
+          200元购物卡<span>仅剩3张</span>
+        </div>
+        <button class="green-btn iwant">我想要</button>
+      </div>
+      <div class="recommend-prize-list">
+        <div class="recommend-prize-item">
+          100元购物卡<span>仅剩17张</span>
+        </div>
+        <button class="green-btn iwant">我想要</button>
+      </div>
+      <div class="recommend-prize-list">
+        <div class="recommend-prize-item">
+          2260元美容券<span>仅剩240张</span>
+        </div>
+        <button class="green-btn iwant">我想要</button>
+      </div>
+    </div>
+
+    <div class="view friend-view">
+      <div class="info-box">
+        <h4>距离搜狐焦点送礼给你的朋友</h4>
+        <h2>还差这一步！</h2>
+      </div>
+      <div class="btn-box">
+        <button class="green-btn help-friend">助一臂之力</button><br>
+        <button class="green-btn iwant2">我也想要</button>
+      </div>
+    </div>
+
+    <div class="view friend-view-finish">
+      <div class="info-box">
+        <h2>恭喜你</h2>
+        <h4>你已经给你朋友助力成功</h4>
+      </div>
+      <div class="btn-box">
+        <button class="green-btn iwant2">我也想要</button>
+      </div>
+    </div>
+
+    <div class="view help-view">
+      <div class="info-box">
+        <h4>距离你获得价值200元的购物卡</h4>
+        <h2>还差<span>1</span>人！</h2>
+      </div>
+      <div class="info-box">
+        <h4>距离你获得价值100元的购物卡</h4>
+        <h2>还差<span>1</span>人！</h2>
+      </div>
+      <div class="info-box">
+        <h4>距离你获得价值2260元的美容券</h4>
+        <h2>还差<span>1</span>人！</h2>
+      </div>
+      <div class="red-box">
+        <h3>恭喜你获得价值200元购物卡</h3>
+        <h5>温馨提示：领取此礼品成功后则无法领取更高级礼品</h5>
+      </div>
+      <div class="red-box">
+        <h3>恭喜你获得价值100元购物卡</h3>
+        <h5>温馨提示：领取此礼品成功后则无法领取更高级礼品</h5>
+      </div>
+      <div class="red-box">
+        <h3>恭喜你获得价值2260元美容券</h3>
+        <h5>温馨提示：领取此礼品成功后则无法领取更高级礼品</h5>
+      </div>
+      <div class="btn-box">
+        <button class="green-btn get-gift">领取</button><br>
+        <button class="green-btn help-myself">给自己助力</button><br>
+        <button class="green-btn iwant2">再看一次</button>
+      </div>
+    </div>
+
+    <div class="view gift-view">
+      <div class="info-box">
+        <h4>XXXXX美容券</h4>
+        <h3>1245398634</h3>
+      </div>
+      <div class="red-box">
+        <h2>恭喜你成功领取价值2260元美容券</h2>
+        <p>
+          1. 每位活动参与者仅能获得一份礼品，您已领取此礼品，无法领取其他礼品；<br>
+          2. 成功兑换卡券后，需提前7天致电400—660—5685预约，仅限25~55周岁海茱雅非会员女性首次进店使用，请在预约时提供上述卡号；<br>
+          3. 此卡券每人仅限使用一张，不可累计使用；<br>
+          4. 本卡券使用截止时间为2017年4月15日；<br>
+          5. 最终解释权归搜狐焦点所有。
+        </p>
+      </div>
+      <div class="red-box">
+        <h2>恭喜你成功领取价值100元购物卡</h2>
+        <p>
+          1. 每位活动参与者仅能获得一份礼品，您已领取此礼品，无法领取其他礼品；<br>
+          2. 此礼品将通过邮寄方式送出，工作人员将在2017年1月3日-1月6日致电您获得收件地址，请保持通信工具畅通；<br>
+          3. 最终解释权归搜狐焦点所有。
+        </p>
+      </div>
+      <div class="btn-box">
+        <button class="green-btn iwant2">再看一次</button>
+      </div>
+    </div>
+
+    <div class="meteor"></div>
+
+    <div class="logo"></div>
+
+    <div class="share"></div>
+
+    <div class="mask"></div>
+    <div class="tips-box">
+      <p>您已经不是搜狐焦点新用户了，不能帮好友助力哦！<br>但您可以自己来抢56万的大礼！</p>
+      <div>
+        <button class="close-tips-box">好的</button><button class="iwant2">我也想要</button>
+      </div>
+    </div>
+
+    <div class="loading" id="_loading_box" >
+      <p id="_loading_text"></p>
+    </div>
+  </div>
+
+  <!-- <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7db2c2f57ac29de50cbc50095fdf78ef";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script type="text/javascript">var _focus_pv_id="focus.wap.all";</script>
+  <script type="text/javascript" src="http://js.sohu.com/mail/pv/pv_v211.js"></script> -->
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/preloadjs-0.6.2.min.js"></script>
+  <script src="./js/swiper-3.3.1.jquery.min.js"></script>
+  <script src="./js/animateBackground-plugin.js"></script>
+  <script src="./js/all.js"></script>
+</body>
+</html>

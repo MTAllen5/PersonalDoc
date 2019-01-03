@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+* {margin: 0; padding: 0;}
+body, html {height: 100%; font-size: 0.07rem; font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #1f1f1f; -webkit-user-select: none;}
+input, button {outline: none; font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;}
+
+.wrapper {position: relative; margin: 0 auto; max-width: 750px; height: 100%; overflow: hidden; text-align: center;}
+.video-box {position: relative; display: inline-block; height: 100%;}
+#video {display: block; margin: 0 auto; object-fit: fill;}
+
+.logo {position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); z-index: 3; width: 1rem; height: 1rem; background: url(../images/logo.png) no-repeat center center; background-size: contain;}
+.pointer.rotate {-webkit-transform: translate(-50%, -50%) rotate(90deg);}
+.pointer {position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); z-index: 4; width: .3rem; height: .3rem;}
+.pointer span {position: absolute; left: 0; top: 0; display: block; width: 100%; height: 100%; background: #eee; border-radius: 50%;}
+.pointer span:nth-child(1) {-webkit-animation: point 3s infinite;}
+.pointer span:nth-child(2) {-webkit-animation: point 3s 1s infinite;}
+.pointer span:nth-child(3) {-webkit-animation: point 3s 2s infinite;}
+.pointer:after {content: ""; position: absolute; left: -.05rem; top: .05rem; display: block; width: .5rem; height: .5rem; background: url(../images/pointer.png) no-repeat center center; background-size: contain; -webkit-transform: translate(0, 30%); opacity: 0; -webkit-animation: pointer 1.6s .5s infinite;}
+
+@-webkit-keyframes point {
+  0% {opacity: 1; -webkit-transform: scale(1);}
+  100% {opacity: 0; -webkit-transform: scale(3);}
+}
+@-webkit-keyframes pointer {
+  100% {opacity: .8; -webkit-transform: translate(0, 0);}
+}
+
+html{font-size:100px;}
+@media all and (min-width:320px) and (max-width:360px){
+  html{font-size:85.33px;}
+}
+@media all and (min-width:360px) and (max-width:380px){
+  html{font-size:100px;}
+}
+@media all and (min-width:380px) and (max-width:414px){
+  html{font-size:101.33px;}
+}
+@media all and (min-width:414px) and (max-width:460px){
+  html{font-size:110.4px;}
+}
+@media all and (min-width:460px) and (max-width:480px){
+  html{font-size:123px;}
+}
+@media all and (min-width:480px) and (max-width:512px){
+  html{font-size:128px;}
+}
+@media all and (min-width:512px) and (max-width:560px){
+  html{font-size:136.53px;}
+}
+@media all and (min-width:544px) and (max-width:560px){
+  html{font-size:145.07px;}
+}
+@media all and (min-width:560px) and (max-width:640px){
+  html{font-size:149.33px;}
+}
+@media all and (min-width:640px) and (max-width:680px){
+  html{font-size:165px;}
+}
+@media all and (min-width:680px) and (max-width:720px){
+  html{font-size:176px;}
+}
+@media all and (min-width:720px) and (max-width:750px){
+  html{font-size:186px;}
+}
+@media all and (min-width:750px){
+  html{font-size:197px;}
+}

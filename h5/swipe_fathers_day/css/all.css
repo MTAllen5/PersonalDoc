@@ -5,29 +5,37 @@ ul {list-style: none;}
 body, html {height: 100%; font-size: 0.07rem; font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #333;}
 input, button, textarea {outline: none; font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;}
 
-.wrap {position: relative; margin: 0 auto; height: 100%; max-width: 750px; width: 100%; background: url(../images/bg2.jpg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%;}
+.wrap {position: relative; margin: 0 auto; height: 100%; max-width: 750px; width: 100%; background: url(../images/bg2.jpg) center center no-repeat; background-size: cover;}
 
 .page-container {width: 100%; height: 100%;}
-.page-container .page {position: relative; background: #fff url(../images/bg2.jpg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%;}
-.page-container .page:first-child {background: #fff url(../images/bg.jpg) center center no-repeat; -webkit-background-size: 100%; background-size: 100%;}
-.page-container .page::before {content: ""; position: absolute; top: .1rem; left: 0; width: 100%; height: .14rem; background: url(../images/header.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
-.page-container .page::after {content: ""; position: absolute; bottom: .2rem; left: 0; width: 100%; height: .35rem; background: url(../images/logo.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.page-container .page {position: relative; background: #fff url(../images/bg2.jpg) center center no-repeat; background-size: cover;}
+.page-container .page:first-child {background: #fff url(../images/bg.jpg) center center no-repeat; background-size: cover;}
+.page-container .page::before {content: ""; position: absolute; top: .1rem; left: 0; width: 100%; height: .14rem; background: url(../images/header.png) center center no-repeat; background-size: contain;}
+.page-container .page::after {content: ""; position: absolute; bottom: .2rem; left: 0; width: 100%; height: .35rem; background: url(../images/logo.png) center center no-repeat; background-size: contain;}
 
 .page1 .page-content {position: absolute; left: 0; top: 10%; width: 100%; height: 2.4rem;}
-.page1 .page-content>div {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
-.page1-text1 {background: url(../images/page1-text1.png) no-repeat center center; background-size: 100%;}
-.page1-text2 {background: url(../images/page1-text2.png) no-repeat center center; background-size: 100%;}
+.page1 .page-content>div {position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;}
+.page1-text1 {background: url(../images/page1-text1.png?v=1) no-repeat center center; background-size: 100%;}
+.page1-text2 {background: url(../images/page1-text2.png?v=1) no-repeat center center; background-size: 100%;}
 .page1-seal {background: url(../images/page1-seal.png) no-repeat center center; background-size: 100%;}
-.page1-text3 {position: absolute; left: 0; top: 51%; width: 3.75rem; height: 2.25rem; background: url(../images/page1-text3.png) no-repeat center center; background-size: 100%;}
-.page1-hero {position: absolute; right: 0; top: 20%; width: 1.88rem; height: 2.95rem; background: url(../images/page1-hero.png) no-repeat center center; background-size: 100%;}
-.page1-yan {position: absolute; right: 10%; top: 65%; width: 1.08rem; height: 1.5rem; background: url(../images/page1-yan.png) no-repeat center center; background-size: 100%;}
+.page1-text3 {position: absolute; left: 0; top: 51%; width: 3.75rem; height: 2.25rem; opacity: 0; background: url(../images/page1-text3.png?v=1) no-repeat center center; background-size: 100%;}
+.page1-hero {position: absolute; right: 0; top: 20%; width: 1.88rem; height: 2.95rem; opacity: 0; background: url(../images/page1-hero.png) no-repeat center center; background-size: 100%;}
+.page1-yan {position: absolute; right: 10%; top: 65%; width: 1.08rem; height: 1.5rem; opacity: 0; background: url(../images/page1-yan.png) no-repeat center center; background-size: 100%;}
+.page-cur .page1-seal {-webkit-animation: big2small 1s ease forwards;}
+.page-cur .page1-text1 {-webkit-animation: fade 1s 1.2s ease forwards;}
+.page-cur .page1-text2,
+.page-cur .page1-hero {-webkit-animation: fade 1s 2s ease forwards;}
+.page-cur .page1-text3 {-webkit-animation: right2left 1s 2.8s ease forwards;}
+.page-cur .page1-yan {-webkit-animation: fade 1s 3.5s ease forwards;}
 
 .page-hero {position: absolute; left: 2%; top: 10%; width: 96%; height: 4.5rem; font-size: 0;}
-.page-left {display: inline-block; margin-right: 3%; width: 49%; height: 100%;}
-.page-right {display: inline-block; width: 48%; height: 100%;}
+.page-left {display: inline-block; margin-right: 3%; width: 48%; height: 100%; opacity: 0;}
+.page-right {display: inline-block; width: 47%; height: 100%;}
+.page-text1 {opacity: 0;}
+.page-text2 {opacity: 0;}
 
 .page2 .page-left {background: url(../images/page2-hero.png) no-repeat right 0; background-size: contain;}
-.page2 .page-text1 {margin: .2rem 0; height: 1.96rem; background: url(../images/page2-text1.png) no-repeat left center; background-size: auto 100%;}
+.page2 .page-text1 {margin: .2rem 0; height: 1.78rem; background: url(../images/page2-text1.png) no-repeat left center; background-size: auto 100%;}
 .page2 .page-text2 {height: 1.77rem; background: url(../images/page2-text2.png) no-repeat left center; background-size: auto 100%;}
 
 .page3 .page-left {background: url(../images/page3-hero.png) no-repeat right 0; background-size: contain;}
@@ -42,35 +50,52 @@ input, button, textarea {outline: none; font-family: -apple-system-font, "Helvet
 .page5 .page-text1 {margin: .1rem 0 .2rem; height: 1.96rem; background: url(../images/page5-text1.png) no-repeat left center; background-size: auto 100%;}
 .page5 .page-text2 {height: 1.78rem; background: url(../images/page5-text2.png) no-repeat left center; background-size: auto 100%;}
 
+.page-cur .page-left {-webkit-animation: left2right 1s .3s ease forwards;}
+.page-cur .page-text1 {-webkit-animation: right2left 1s .3s ease forwards;}
+.page-cur .page-text2 {-webkit-animation: right2left 1s 1.5s ease forwards;}
+
 .page6 .page-content {position: absolute; left: 0; top: 8%; width: 100%; height: 4.8rem;}
 .page6 .page-content>div {position: absolute; left: 0; width: 100%;}
-.page6-text1 {top: 0; height: 2.45rem; background: url(../images/page6-text1.png) no-repeat center center; background-size: 100%;}
-.page6-text2 {top: 85%; height: .58rem; background: url(../images/page6-text2.png) no-repeat center center; background-size: 100%;}
-.page6-img {top: 30%; height: 2.45rem; background: url(../images/page6-img.png) no-repeat center center; background-size: 100%;}
+.page6-text1 {top: 0; height: 2.45rem; background: url(../images/page6-text1.png) no-repeat center center; background-size: 100%; opacity: 0;}
+.page6-text2 {top: 85%; height: .58rem; background: url(../images/page6-text2.png?v=2) no-repeat center center; background-size: auto 100%; opacity: 0;}
+.page6-img {top: 30%; height: 2.45rem; background: url(../images/page6-img.png) no-repeat center center; background-size: 100%; opacity: 0;}
+.page-cur .page6-text1 {-webkit-animation: up2down 1s .3s ease forwards;}
+.page-cur .page6-img {-webkit-animation: fade 1.5s .8s ease forwards;}
+.page-cur .page6-text2 {-webkit-animation: up2down 1s 1.6s ease forwards;}
+
 
 .page7 .page-content {position: absolute; left: 6%; top: 13%; width: 88%; height: 4.8rem;}
-.page7 .page7-text1 {height: .26rem; background: url(../images/page7-text1.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.page7 .page7-text1 {height: .26rem; background: url(../images/page7-text1.png) center center no-repeat; background-size: contain;}
 .page7 .page7-for {margin-top: .3rem; font-size: .19rem;}
 .page7 .page7-comment {position: relative; margin-top: .1rem; width: 100%; height: 1.8rem; border: 2px solid #adaa9d; border-radius: .1rem; overflow: hidden;}
 .page7 .page7-comment::after {content: "144个字以内"; position: absolute; bottom: .05rem; right: .1rem; font-size: .12rem; color: #999;}
 .page7 .page7-comment textarea {box-sizing: border-box; padding: .1rem; padding-bottom: .3rem; width: 100%; height: 100%; border: 0; resize: none; font-size: .14rem;}
 .page7 .page7-tips {position: relative; margin-top: .1rem; padding-left: .25rem; line-height: .2rem; font-size: .12rem;}
-.page7 .page7-tips::after {content: ""; position: absolute; left: .1rem; top: 0; width: .11rem; height: .2rem; background: url(../images/heart.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.page7 .page7-tips::after {content: ""; position: absolute; left: .1rem; top: 0; width: .11rem; height: .2rem; background: url(../images/heart.png) center center no-repeat; background-size: contain;}
 .page7 .page7-btn {margin-top: .4rem; text-align: center;}
-.page7 .page7-btn button {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/page7-btn.png) center center no-repeat; -webkit-background-size: 50%; background-size: 50%;}
+.page7 .page7-btn button {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/page7-btn.png) center center no-repeat; background-size: 50%;}
+
+.page8::after {display: none;}
+.page8 .page-content {position: absolute; left: 0; top: 8%; width: 100%; height: 4.8rem;}
+.page8 .page8-logo {margin-top: .1rem; width: 100%; height: .35rem; background: url(../images/logo.png) center center no-repeat; background-size: contain;}
+.page8 .page8-text1 {margin-top: .3rem; height: .75rem; background: url(../images/page8-text1.png?v=1) center center no-repeat; background-size: contain; opacity: 0;}
+.page8 .page8-text2 {margin-top: .2rem; height: .8rem; background: url(../images/page8-text.png) center center no-repeat; background-size: contain; opacity: 0;}
+.page8 .page8-img {margin-top: .1rem; height: 2.6rem; background: url(../images/page8-img.png) center center no-repeat; background-size: contain; opacity: 0;}
+.page-cur .page8-text1 {-webkit-animation: up2down 1s .3s ease forwards;}
+.page-cur .page8-text2 {-webkit-animation: up2down 1s 1s ease forwards;}
+.page-cur .page8-img {-webkit-animation: fade 1s 2s ease forwards;}
 
 .mask {display: none; position: fixed; top: 0; left: 0; z-index: 9; width: 100%; height: 100%; background-color: rgba(0,0,0,.7);}
 .info {display: none; position: fixed; left: 50%; top: 50%; z-index: 10; box-sizing: border-box; margin-left: -1.6rem; margin-top: -1.25rem; padding: .15rem; width: 3.2rem; height: 2.5rem; background-color: #e4e4df; border: 1px solid #333; border-radius: .1rem;}
-.info .title {margin-top: .1rem; margin-bottom: .3rem; height: .26rem; background: url(../images/info-title.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.info .title {margin-top: .1rem; margin-bottom: .3rem; height: .26rem; background: url(../images/info-title.png) center center no-repeat; background-size: contain;}
 .info .ipt {margin-bottom: .1rem;}
 .info .ipt label {display: inline-block; margin-right: .1rem; width: .6rem; text-align: right; font-size: .15rem;}
 .info .ipt input {padding: .05rem; width: 1.8rem; height: .24rem; background-color: #fff; border: 1px solid #afafaf; border-radius: .06rem; font-size: .14rem;}
 .info .btn {margin-top: .2rem; text-align: center;}
-.info .btn button {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/info-btn.png) center center no-repeat; -webkit-background-size: 40%; background-size: 40%;}
+.info .btn button {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/info-btn.png) center center no-repeat; background-size: 40%;}
 
 .comments-list {display: none; position: absolute; top: 0; left: 0; z-index: 11; width: 100%; height: 100%; background: url(../images/bg.jpg) center center no-repeat; -webkit-background-size: cover; background-size: cover;}
 .comments-list::before {content: ""; position: absolute; top: .1rem; left: 0; width: 100%; height: .14rem; background: url(../images/header.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
-.comments-list::after {content: ""; position: absolute; bottom: .2rem; left: 0; width: 100%; height: .35rem; background: url(../images/logo.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
 .comments-list .title {margin-top: .5rem; margin-bottom: .3rem; height: .26rem; background: url(../images/comments-title.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
 .comments-list ul {margin: 0 auto; width: 90%; height: 4.2rem; overflow: auto; -webkit-overflow-scrolling: touch;}
 .comments-list li {display: -webkit-box; display: -webkit-flexbox; display: -webkit-flex; display: flex; -webkit-box-orient: horizontal; -webkit-flex-direction: row; flex-direction: row; margin-bottom: .1rem; padding: .1rem; background: #fff; border-radius: .1rem; font-size: 0;}
@@ -78,9 +103,21 @@ input, button, textarea {outline: none; font-family: -apple-system-font, "Helvet
 .comments-list li .comment-img {width: .4rem; height: .4rem; border-radius: 50%; vertical-align: middle;}
 .comments-list li .comment-ctn {margin-left: .1rem; flex-grow: 1; font-size: .12rem; line-height: 1.2;}
 .comments-list li .comment-likes {position: relative; margin-left: .1rem; padding-left: .15rem; width: .3rem; font-size: .12rem; line-height: .4rem;}
-.comments-list li .comment-likes::after {content: ""; position: absolute; left: 0; top: 0; width: .12rem; height: .4rem; background: url(../images/heart.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.comments-list li .comment-likes::after {content: ""; position: absolute; left: 0; top: 0; width: .12rem; height: .4rem; background: url(../images/heart_unlike.png) center center no-repeat; -webkit-background-size: contain; background-size: contain;}
+.comments-list li .comment-likes.liked::after {background-image: url(../images/heart.png);}
+.comments-list .btn {margin-top: .1rem; text-align: center;}
+#oneMore {width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/list-btn1.png) center center no-repeat; background-size: 60%;}
+#oneMoreCom {margin-left: .1rem; width: 1.2rem; height: .4rem; border: 1px solid #333; border-radius: .1rem; background: url(../images/list-btn2.png) center center no-repeat; background-size: 60%;}
 
-.loading {position: absolute; z-index: 20; top: 0; left: 0; width: 100%; height: 100%; background: #fff;}
+.tips {position: absolute; left: 50%; top: 50%; z-index: 19; margin-top: -.2rem; margin-left: -.6rem; width: 1.2rem; height: .4rem; opacity: 0; background: rgba(0,0,0,.8); border-radius: .1rem; -webkit-transition: all 1s ease;
+-o-transition: all 1s ease;
+transition: all 1s ease; line-height: .4rem; color: #fff; font-size: .12rem; text-align: center;}
+.tips.show {opacity: 1; -webkit-transform: translateY(-100%);
+-ms-transform: translateY(-100%);
+-o-transform: translateY(-100%);
+transform: translateY(-100%);}
+
+.loading {position: absolute; z-index: 20; top: 0; left: 0; width: 100%; height: 100%; background: #fff; text-align: center;}
 .loading>p {position: absolute; top: 50%; left: 0; width: 100%; -webkit-transform: translateY(-50%); font-size: 0.2rem; color: #666;}
 
 .global-arrow-btm,
@@ -101,8 +138,33 @@ input, button, textarea {outline: none; font-family: -apple-system-font, "Helvet
 	100%{opacity:0;-webkit-transform:translateY(0.25rem) rotate(180deg);}
 }
 
-#musicIcon {position: absolute; top: 20px; right: 20px; z-index: 20; display: block; width: 30px; height: 30px; background: url(music.png) center center no-repeat; background-size: contain; border: 1px solid #fff; border-radius: 50%; -webkit-animation: turn 2s linear infinite;}
-#musicIcon.pause {-webkit-animation-play-state: paused;}
+@-webkit-keyframes fade {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@-webkit-keyframes big2small {
+	0% {opacity: 0; -webkit-transform: scale(2);}
+	100% {opacity: 1; -webkit-transform: scale(1);}
+}
+@-webkit-keyframes left2right {
+	0% {opacity: 0; -webkit-transform: translateX(-20%);}
+	100% {opacity: 1; -webkit-transform: translateX(0);}
+}
+@-webkit-keyframes right2left {
+	0% {opacity: 0; -webkit-transform: translateX(20%);}
+	100% {opacity: 1; -webkit-transform: translateX(0);}
+}
+@-webkit-keyframes up2down {
+	0% {opacity: 0; -webkit-transform: translateY(-20%);}
+	100% {opacity: 1; -webkit-transform: translateX(0);}
+}
+@-webkit-keyframes down2up {
+	0% {opacity: 0; -webkit-transform: translateY(20%);}
+	100% {opacity: 1; -webkit-transform: translateX(0);}
+}
+
+#musicIcon {position: absolute; top: 20px; right: 20px; z-index: 20; display: block; width: 30px; height: 30px; background: url(../images/music.png) center center no-repeat; background-size: contain; border: 1px solid #646464; border-radius: 50%;}
+#musicIcon.play { -webkit-animation: turn 2s linear infinite;}
 @-webkit-keyframes turn {
 	0% {transform: rotate(0deg);}
 	100% {transform: rotate(360deg);}

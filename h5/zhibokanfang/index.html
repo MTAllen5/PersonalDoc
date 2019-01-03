@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title></title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="res/all.css?v=20170706" rel="stylesheet">
+</head>
+<body>
+
+  <div class="wrapper" id="app">
+    <div class="video-box">
+      <div class="logo" v-show="showLogo" @click.once="start"></div>
+      <div class="pointer" v-show="showPointer" @click.prevent.once="start">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <router-view></router-view>
+    </div>
+  </div>
+
+  <!-- <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7db2c2f57ac29de50cbc50095fdf78ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script type="text/javascript">var _focus_pv_id="focus.wap.all"; console.log(_focus_pv_id);</script>
+  <script type="text/javascript" src="http://js.sohu.com/mail/pv/pv_v211.js"></script> -->
+  <!-- <script src="http://wx.gz.focus.cn/js/vue.min.js"></script> -->
+  <script src="../js/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue-router/2.5.3/vue-router.min.js"></script>
+  <script src="../js/mywx.js"></script>
+  <script src="res/all.js?v=20170606"></script>
+</body>
+</html>

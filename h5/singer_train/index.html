@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>中国新歌声晋级直通车</title>
+  <link href="res/all.css?v=201705161" rel="stylesheet">
+</head>
+<body>
+
+  <div class="wrapper" id="app" v-cloak>
+
+    <!-- 首页 -->
+    <transition name="slide">
+    <div class="page-cover" v-show="showCover">
+      <div class="cover-title"></div>
+      <div class="cover-link" v-on:click="checkRoute('18')">
+        <h5 style="margin-top: .09rem;">最佳人气选手</h5>
+      </div>
+      <template v-if="nextPhase">
+        <div class="cover-link" v-on:click="checkRoute('19')">
+          <h5>直晋总决赛19日</h5>
+          <h6>半决赛选手直接晋级总决赛</h6>
+        </div>
+        <div class="cover-link" v-on:click="checkRoute('20')">
+          <h5>直晋总决赛20日</h5>
+          <h6>半决赛选手直接晋级总决赛</h6>
+        </div>
+      </template>
+      <div class="cover-link" v-on:click="checkRoute('0')">
+        <h5 style="margin-top: .09rem;">往期回顾</h5>
+      </div>
+    </div>
+    </transition>
+
+
+    <!-- 选手列表 -->
+    <transition name="fade">
+    <div class="page-vote" v-show="showVoteList">
+      <div class="top3-portrait" v-bind:class="{'popular': isPopular}" v-if="contestant.length > 0">
+        <span v-for="index in 3"><img v-bind:src="imgUrl(contestant[index - 1]? contestant[index - 1].portrait : '')"></span>
+      </div>
+
+      <div class="bg-mask" v-bind:class="{'popular': isPopular}">
+        <div class="ctn-title">
+          <p><span>{{voteSelect.name}}</span>&nbsp; | &nbsp;{{voteSelect.date}}</p>
+          <p>{{voteSelect.desc}}</p>
+          <button class="rules-open" v-on:click.prevent="showRules = true"></button>
+        </div>
+        <!-- 人气票选新增 -->
+        <a class="banner" v-if="isPopular" v-on:click="popup = true">
+          <i>点击查看详情</i>
+        </a>
+        <!-- 人气票选新增 -->
+        <div class="top3-info">
+          <div v-for="index in 3" v-on:click="showPersonalPage(contestant[index - 1])">
+            <h5 class="contestant-name">{{contestant[index - 1]? contestant[index - 1].name : ""}}</h5>
+            <span class="contestant-vote-num">{{contestant[index - 1]? contestant[index - 1].count : 0}}</span>
+          </div>
+        </div>
+        <ul class="contestant-list">
+          <li v-for="(item, index) in contestant" v-if="index > 2" v-on:click="showPersonalPage(item)">
+            <span class="number">{{index + 1}}</span>
+            <img class="con-port" v-bind:src="imgUrl(item.portrait)">
+            <button class="con-vote"></button>
+            <div class="con-info">
+              <h5 class="contestant-name">{{item.name}}<span class="contestant-vote-num">{{item.count}}</span></h5>
+              <p>参赛号码：{{item.detail_id}}</p>
+              <p class="con-motto">{{item.motto}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 倒计时 -->
+      <div class="count-down" v-show="countDown">{{countDown}}</div>
+      <a class="back-home" href="http://wx.gz.focus.cn/xswh/?type=vote03">返回首页</a>
+      <div class="logo"></div>
+      <div class="popup" v-show="popup" v-on:click="popup = false"></div>
+    </div>
+    </transition>
+
+
+    <!-- 规则 -->
+    <transition name="fade">
+      <div class="rules" v-show="showRules" v-bind:class="{'popular': isPopular}">
+        <div class="rules-box">
+          <div class="rules-text" v-bind:style="'background-image: url(' + ruleUrl() + ')'"></div>
+          <div class="rules-close" v-on:click="showRules = false"></div>
+        </div>
+      </div>
+    </transition>
+
+
+    <!-- 选手个性页面 -->
+    <transition name="fade">
+    <div class="page-personal" v-show="showPersonal">
+      <div class="big-img" v-bind:style="'background-image: url(' + bigImgUrl(payContestant.bigImg) + ')'">
+        <div class="ctn-title">
+          <p>选手风采</p>
+          <button class="rules-open" v-on:click.prevent="showRules = true"></button>
+        </div>
+        <div class="bullet-comments">
+          <!-- 弹幕内容 -->
+        </div>
+      </div>
+      <div class="personal-box">
+        <div class="personal-info">
+          <img class="personal-port" v-bind:src="imgUrl(payContestant.portrait)">
+          <p><strong class="contestant-name">{{payContestant.name}}</strong><span>参赛号码：{{payContestant.detail_id}}</span><span class="contestant-vote-num">{{payContestant.count}}</span></p>
+          <p><strong>NO.{{payContestant.rank}}</strong><span>目前排名</span></p>
+        </div>
+        <div style="text-align: center;">
+          <div class="personal-vote" v-on:click="showVotePay()">为TA投票</div>
+          <div class="impression"><label>好友印象：</label><input type="text" maxlength="15" placeholder="写下你的印象" v-model.trim.lazy="commentContent"><button v-on:click="checkCommment">发送</button></div>
+        </div>
+      </div>
+      <div class="back2list" v-on:click="checkRoute(voteSelect.vote_id)">查看全部排行&gt;</div>
+    </div>
+    </transition>
+
+
+    <!-- 投票框 -->
+    <transition name="fade">
+    <div class="" v-show="showVote">
+      <!-- 投票框分享提示 -->
+      <div class="share"></div>
+
+      <div class="panel" style="top: 52%;">
+        <div class="vote-obj-info">
+          <div class="vote-obj-portrait"><img v-bind:src="imgUrl(payContestant.portrait)"><span>{{payContestant.rank}}</span></div>
+          <h5 class="contestant-name">{{payContestant.name}}</h5>
+          <p class="contestant-motto">{{payContestant.motto}}</p>
+          <p class="contestant-vote-num">{{payContestant.count}}</p>
+        </div>
+        <div class="votes">
+          <span v-if="!isFreeVote" class="votes-reduce" v-on:click="voteNum > 1? voteNum-- : voteNum">-</span>
+          <div class="votes-number txt-red">
+            <span>{{voteNum}}</span>
+            <select v-model="voteNum">
+              <option v-for="index in 200">{{index}}</option>
+            </select>
+          </div>
+          <span v-if="!isFreeVote" class="votes-add txt-red" v-on:click="voteNum < 200? voteNum++ : voteNum">+</span>
+        </div>
+        <div class="btn-box">
+          <button v-on:click.prevent="closeVotePay">再看看</button><!--
+          --><button class="txt-red" v-if="isFreeVote" v-on:click="voteFree()">为TA投一票</button><!--
+          --><button class="txt-red" v-else v-on:click="getOrderID()">确认并支付</button>
+        </div>
+      </div>
+    </div>
+    </transition>
+
+
+    <!-- 往期回顾 -->
+    <transition name="slide">
+    <div class="page-history" v-show="history">
+      <div class="history-title">往期回顾</div>
+      <ul class="history-list">
+        <li v-on:click="checkRoute('3')">
+          <h5>直通复赛 ｜4月2日 地王广场专场</h5>
+          <p>投票时间：3月27日（凌晨0点）- 4月2日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('6')">
+          <h5>直通复赛 ｜4月8日 五号停机坪专场</h5>
+          <p>投票时间：4月3日（凌晨0点）- 4月9日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('7')">
+          <h5>直通复赛 ｜4月14日 白云万达广场专场</h5>
+          <p>投票时间：4月10日（凌晨0点）- 4月16日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('8')">
+          <h5>直通复赛 ｜4月15日 富力伯爵山专场</h5>
+          <p>投票时间：4月10日（凌晨0点）- 4月16日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('10')">
+          <h5>直通半决赛 ｜4月22日 丽影广场专场</h5>
+          <p>投票时间：4月21日（凌晨0点）- 4月27日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('11')">
+          <h5>直通半决赛 ｜4月23日 五号停机坪专场</h5>
+          <p>投票时间：4月21日（凌晨0点）- 4月27日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('14')">
+          <h5>直通半决赛 ｜4月29日 星汇云城专场</h5>
+          <p>投票时间：4月28日（凌晨0点）- 5月4日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('15')">
+          <h5>直通半决赛 ｜5月1日 凯德云尚专场</h5>
+          <p>投票时间：4月28日（凌晨0点）- 5月4日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('16')">
+          <h5>直通半决赛 ｜5月6日 洁柔专场</h5>
+          <p>投票时间：5月5日（凌晨0点）- 5月14日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('17')">
+          <h5>直通半决赛 ｜5月13日 佳兆业·城市广场专场</h5>
+          <p>投票时间：5月5日（凌晨0点）- 5月14日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('4')">
+          <h5>初选淘汰复活</h5>
+          <p>投票时间：4月1日（凌晨0点）- 4月10日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('5')">
+          <h5>初选待定晋级</h5>
+          <p>投票时间：4月1日（凌晨0点）- 4月10日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('12')">
+          <h5>初赛待定转晋级6日</h5>
+          <p>投票时间：4月25日（凌晨0点）- 4月30日（23点59分）</p>
+        </li>
+        <li v-on:click="checkRoute('13')">
+          <h5>初赛待定转晋级7日</h5>
+          <p>投票时间：4月25日（凌晨0点）- 4月30日（23点59分）</p>
+        </li>
+      </ul>
+    </div>
+    </transition>
+
+
+    <!-- 提示框 -->
+    <transition name="fade">
+      <div class="panel" v-show="showMsgTips">
+        <div class="result-text">{{tipsMsg}}</div>
+        <div class="btn-box">
+          <button class="block" v-on:click="showMsgTips = false">好的</button>
+        </div>
+      </div>
+    </transition>
+
+
+    <div class="mask" v-show="showMask"></div>
+
+  </div>
+
+  <!-- <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7db2c2f57ac29de50cbc50095fdf78ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script type="text/javascript">var _focus_pv_id="focus.wap.all";</script>
+  <script type="text/javascript" src="http://js.sohu.com/mail/pv/pv_v211.js"></script> -->
+  <script>
+    var userinfo = (function() {
+      var nickname = "<?php echo $userInfo['nickname']?>";
+      var token = "<?php echo md5($userInfo['openid'])?>";
+      var garden = "<?php echo $_GET['garden']?>".split("_");
+      if(isNaN(Number(garden[0]))) {
+        garden = [];
+      }
+
+      return {
+        nickname : nickname,
+        token : token,
+        vote_id: garden[0],
+        detail_id: garden[1]
+      };
+    }());
+  </script>
+  <script src="res/voteList.js?v=20170518"></script>
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/zepto.min.js"></script>
+  <script src="../js/director.min.js"></script>
+  <script src="../js/mywx.js"></script>
+  <script>mywx.platform = 108;</script>
+  <script src="res/all.js?v=201705161"></script>
+</body>
+</html>
