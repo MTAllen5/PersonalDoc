@@ -182,7 +182,7 @@
                     size: $(item).width(),
                     background: '#fff',
                     radius: 4,
-                    text: origin + '/' + path + $(item).attr('href').slice(3)
+                    text: origin + '/' + path + (path === '' ? '' : '/') + $(item).attr('href').slice(3)
                 });
             })
         });
