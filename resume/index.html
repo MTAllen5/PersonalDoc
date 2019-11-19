@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
-    <title>MT·Allen简历</title>
+    <title>简历·Resume</title>
     <link rel="stylesheet" href="all.css">
 </head>
 <body>
     <div class="wrapper">
         <section class="information">
-            <h1>伍玉良<small>（前端、H5）</small></h1>
+            <h1>伍玉良<small>（前端开发）</small></h1>
             <p>电话：15813317377</p>
             <p>邮箱：monster10@qq.com</p>
             <p>教育经历：中山大学南方学院<small> / 本科 <span class="txt-gray">/ 2009 - 2013 &nbsp;计算机科学与技术</span></small></p>
@@ -19,57 +19,79 @@
 
         <section class="description">
             <header class="title">自我描述</header>
-            <p class="txt-gray">5年前端开发经验，熟练制作pc、h5活动页、公众号网页，热衷使用css3新属性、过渡和动画实现页面效果，对处理移动端页面兼容适配问题有足够经验。会使用canvas实现小游戏、生成图片二维码、截图等小功能。熟练使用vuejs、组件化、es6语法进行开发。具有良好的编程能力和习惯，提供代码的可读性和拓展性，重视页面的使用体验。</p>
+            <ul>
+                <li class="txt-gray">- 5年前端开发经验，开发过多个中小型PC、管理后台、商业h5、业务h5项目。</li>
+                <li class="txt-gray">- 熟练使用vue、element-ui、ES6、css3、canvas、webpack进行开发。</li>
+                <li class="txt-gray">- 对UI组件化开发、响应式、多端兼容适配有一定开发经验。</li>
+                <li class="txt-gray">- 了解但不熟悉小程序开发、nodejs开发。</li>
+                <li class="txt-gray">- 良好的编程习惯，重视代码的可读性、拓展性和页面的使用体验。</li>
+            </ul>
         </section>
 
         <section class="experience">
             <header class="title">工作经历</header>
             <div class="mgn25">
-                <h3>法本信息（外驻唯品会）<small> / 前端开发<span class="txt-gray"> / 2019.1 - 至今</span></small></h3>
-                <ol class="work-content">
-                    <li>负责维护企业OA类，HR类等内部系统；</li>
-                    <li>负责开发、迭代内部系统新版本；</li>
-                </ol>
+                <h3>深圳法本信息广州分公司（外驻唯品会）<small> / 前端开发<span class="txt-gray"> / 2019.1 - 至今</span></small></h3>
+                <ul class="work-content">
+                    <li>负责开发、维护派驻企业的OA类、HR类等内部系统应用</li>
+                    <li>负责维护派驻企业应用的通用UI组件库</li>
+                </ul>
             </div>
             <div class="mgn25">
                 <h3>广州李子网络有限公司<small> / 前端开发<span class="txt-gray"> / 2018.7 - 2018.12</span></small></h3>
-                <ol class="work-content">
-                    <li>负责维护原有产品的版本迭代，代码优化</li>
-                    <li>负责新产品的前端开发，编写通用组件</li>
+                <ul class="work-content">
+                    <li>负责开发公司心项目、维护旧项目的优化和迭代</li>
                     <li>负责编写运营市场所需的H5活动页</li>
                     <li>负责公司商户后台、运营后台的开发和维护</li>
-                </ol>
+                </ul>
             </div>
             <div class="mgn25">
                 <h3>搜狐焦点广州分公司<small> / 前端开发<span class="txt-gray"> / 2016.6 - 2018.4</span></small></h3>
-                <ol class="work-content">
-                    <li>主要负责公司为合作商策划活动的专题页面、H5页面和H5小游戏的制作</li>
-                    <li>负责初步尝试公司的一个SPA单页应用和该项目的小程序</li>
-                </ol>
+                <ul class="work-content">
+                    <li>负责公司为合作商策划活动的专题页面、H5页面和H5小游戏的制作</li>
+                    <li>初步尝试开发公司的一个H5应用和该项目的小程序</li>
+                </ul>
             </div>
             <div class="mgn25">
                 <h3>广州市全航电子科技有限公司<small> / 前端开发<span class="txt-gray"> / 2014.6 - 2016.4</span></small></h3>
-                <ol class="work-content">
+                <ul class="work-content">
                     <li>负责全行网的页面制作以及页面交互</li>
                     <li>后台管理系统的前台界面</li>
-                </ol>
+                </ul>
+            </div>
+            <div class="mgn25">
+                <h3>广州红海人力资源有限公司（外驻南航电子商务处）<small> / 页面制作<span class="txt-gray"> / 2013.9 - 2014.5</span></small></h3>
+                <ul class="work-content">
+                    <li>负责项目静态页面的制作以及交互</li>
+                </ul>
             </div>
         </section>
 
         <section class="projects">
             <header class="title">项目经历</header>
-            <div class="mgn25">
+            <div class="mgn25 clearfix">
+                <h3>vue-mtui （UI组件库）</h3>
+                <img class="qrcode" src="images/project4.png">
+                <p class="txt-gray">这是一套基于vue2.0的ui组件库。它是由我平时工作上对页面个别模块进行组件化开发过程中整理出来的。它可以使得我在往后的工作中，开发类似模块功能时能快速、效率、可适应地进行开发。</p>
+            </div>
+            <div class="mgn25 clearfix">
+                <h3>唯秘app轻应用</h3>
+                <img class="qrcode" src="images/project3.png">
+                <p class="txt-gray">一系列运行在app webview的h5应用。这部分应用主要是面向企业内部的OA/HR业务的，其中有查看班车线路情况的vbus、人脸采集更新应用、任务分发应用等，使用的技术栈主要为vue系列、axios、es6、canvas、vue-weui-x、tracking.js、amap、echarts等。</p>
+            </div>
+            <div class="mgn25 clearfix">
                 <h3>撩美味团餐</h3>
-                <img class="qrcode" src="images/project1.png">
-                <p class="txt-gray">该项目包含两个主要功能，一个是提供商圈内晚餐优惠补贴的点餐系统，另一个是企业团餐点餐系统。在前端页面中，主要逻辑包括多种规格菜品的选择与加减菜、缓存购物车、更改预约日期、优惠计算。我在该项目中，负责维护和迭代优惠点餐模块，以及开发团餐模块。在项目中使用了vuejs框架、es6语法、sass/stylus进行开发，对页面细化成多个小组件，以提高组件的复用性和可维护性，还有项目的拓展性。</p>
-            </div>
-            <div class="mgn25">
-                <h3>楼市排行榜</h3>
                 <img class="qrcode" src="images/project2.png">
-                <p class="txt-gray">该项目是一个展示楼市综合数据排列的SPA单页应用。在应用中，可以搜索查看指定楼盘的相关数据，包括历史成交、价格涨幅、附近交通配套学位环境、未来规划等信息，也可以根据需求条件去筛选符合要求的排行榜，为用户购房投资提供指导参考的作用。该项目使用了vuejs来开发，配合一些css3动画，canvas等来提高应用的用户体验和可观性。</p>
+                <p class="txt-gray">企业团餐与商圈优惠补贴点餐系统。主要功能为多种规格菜品的选择与加减菜、缓存购物车、更改预约日期、优惠计算。我在该项目中负责维护和迭代优惠点餐模块，以及开发团餐模块。项目使用的技术栈主要为vue+es6+axios+sass/stylus。</p>
             </div>
-            <div class="mgn25">
-                <h3>H5活动页--列表</h3>
+            <div class="mgn25 clearfix">
+                <h3>楼市排行榜</h3>
+                <img class="qrcode" src="images/project1.png">
+                <p class="txt-gray">该项目是一个展示楼市综合数据排列的SPA单页应用。在应用中，可以搜索查看指定楼盘的相关数据，包括历史成交、价格涨幅、附近交通配套学位环境、未来规划等信息，为用户购房投资提供指导参考的作用。该项目使用了vue+css3+canvas。</p>
+            </div>
+            <div class="mgn25 clearfix">
+                <h3>H5商业活动页</h3>
+                <p class="txt-gray">一系列微信公众号H5页面（商业展示h5、h5小游戏）。主要使用的技术包括wx api、zepto、jquery、canvas、svg、css3、createjs、directorjs等。可扫下列二维码查看。</p>
                 <div class="h5-list">
                     <div class="h5-item">
                         <a class="h5-item-img" href="../h5/gz_story/index.html" target="_blank">

@@ -36,8 +36,8 @@ section::before {
     height: 0;
     border-top: 1px solid #f2f3f3;
 }
-section:first-child {
-    margin-top: 0;
+section:last-child {
+    margin-bottom: 0;
 }
 section:first-child::before {
     display: none;
@@ -57,11 +57,23 @@ h3 {
     font-size: 12pt;
 }
 
-ol {
-    list-style-position: inside;
+ul {
+    list-style: none;
     font-size: 10pt;
     color: rgba(136, 136, 136);
     line-height: 1.8;
+}
+
+.clearfix::after {
+    content: '\20';
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.work-content li {
+    padding-left: 1.2em;
 }
 
 .mgn25 {
@@ -102,10 +114,10 @@ ol {
 
 .qrcode {
     float: right;
-    margin-top: 5px;
-    margin-left: 25px;
-    width: 110px;
-    height: 110px;
+    margin-top: 2px;
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
 }
 
 .h5-list {
