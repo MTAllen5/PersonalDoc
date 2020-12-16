@@ -74,6 +74,9 @@ ul {
 
 .work-content {
     padding-left: 1.2em;
+    font-size: 10pt;
+    color: rgba(136, 136, 136);
+    line-height: 1.8;
 }
 
 .mgn25 {
